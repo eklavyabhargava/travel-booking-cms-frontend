@@ -134,7 +134,11 @@ const Dashboard = () => {
         return updatedPackage;
       });
     }
-    setDeleteConfirmation((curr) => ({ ...curr, isLoading: false }));
+    setDeleteConfirmation((curr) => ({
+      ...curr,
+      showModal: false,
+      isLoading: false,
+    }));
   };
 
   // Handle on cancel delete confirmation
