@@ -5,6 +5,7 @@ import { useState } from "react";
 import { loginUser } from "../api/userService";
 import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
+import Spinner from "react-bootstrap/Spinner";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -13,6 +14,7 @@ const Login = () => {
   });
   const [apiError, setApiError] = useState("");
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const Navigate = useNavigate();
 
@@ -59,6 +61,7 @@ const Login = () => {
       setErrors(validationErrors); // Set errors if validation fails
     } else {
       setErrors({});
+      setLoading(true);
 
       const response = await loginUser(credentials);
       if (response.status === 200) {
@@ -68,6 +71,7 @@ const Login = () => {
         setApiError(response.data.message);
       }
     }
+    setLoading(false);
   };
 
   return (
@@ -123,8 +127,8 @@ const Login = () => {
                 </Form.Control.Feedback>
               </div>
 
-              <Button type="submit" variant="primary">
-                Login
+              <Button disabled={loading} type="submit" variant="primary">
+                {loading ? <Spinner variant="light" /> : "Login"}
               </Button>
             </Form>
           </Card.Body>

@@ -12,6 +12,7 @@ import Modal from "react-bootstrap/Modal";
 import ConfirmationModal from "../component/ConfirmationModal";
 import TravelPackageModal from "../component/TravelPackageModal";
 import BookingModal from "../component/BookingModal";
+import Spinner from "react-bootstrap/esm/Spinner";
 
 export const formatDate = (isoDate) => {
   const date = new Date(isoDate);
@@ -294,7 +295,9 @@ const Dashboard = () => {
           </div>
         )}
 
-        {currTab === "package" ? (
+        {loading ? (
+          <Spinner variant="dark" className="mx-auto my-auto" />
+        ) : currTab === "package" ? (
           <Table className="mt-2">
             <Thead>
               <Tr>
