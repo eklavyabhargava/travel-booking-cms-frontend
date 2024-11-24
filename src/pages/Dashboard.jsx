@@ -168,7 +168,15 @@ const Dashboard = () => {
       setNewPackage({});
     }
     if (bookingId.length) {
-      setUpdatedBooking(Bookings.find((booking) => booking._id === bookingId));
+      const selectedBooking = Bookings.find(
+        (booking) => booking._id === bookingId
+      );
+      if (selectedBooking) {
+        setUpdatedBooking({
+          ...selectedBooking,
+          selectedPackage: selectedBooking.selectedPackage._id || "",
+        });
+      }
     }
     setShowModal({ modalName, packageId, bookingId });
   };
