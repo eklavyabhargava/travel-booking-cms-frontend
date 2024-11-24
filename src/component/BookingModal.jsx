@@ -129,7 +129,7 @@ const BookingModal = ({
                 {field.type === "select" ? (
                   <Form.Select
                     name={field.name}
-                    value={newBooking[field.name] || ""}
+                    value={newBooking[field.name]._id || ""}
                     onChange={handleChange}
                     isInvalid={!!errors[field.name]}
                   >
