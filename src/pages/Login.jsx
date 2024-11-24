@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { loginUser } from "../api/userService";
 import { useNavigate } from "react-router-dom";
+import "../styles/login.css";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -80,12 +81,7 @@ const Login = () => {
         </Card>
       )}
       <div className="my-auto">
-        <Card
-          bg="light"
-          text="dark"
-          style={{ maxWidth: "40vw" }}
-          className="mb-2"
-        >
+        <Card bg="light" text="dark" className="mb-2 card">
           <Card.Header className="text-center fw-bold fs-4">
             Admin Login
           </Card.Header>
